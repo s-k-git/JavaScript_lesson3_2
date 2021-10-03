@@ -33,8 +33,7 @@ function addtable() {
         newCell.appendChild(deletebtn);
 
         document.getElementById(`deleteNo${index}`).onclick = function deletetable() {
-            let a = this.id.substring(8);
-            todos.splice(a, 1);
+            todos.splice(index, 1);
         
             let table = document.getElementById("table-contents");
             table.innerHTML = "";        
