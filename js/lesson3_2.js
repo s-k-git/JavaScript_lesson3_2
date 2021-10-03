@@ -4,13 +4,13 @@ const todos = [];
 const comment = document.getElementById("comment");
 const table = document.getElementById("table-contents");
 
-function addtable() {
+const addtable = () => {
     const todo = { task: comment.value, status: "作業中", deletion: "削除" }
     todos.push(todo);
     listdescription();
 }
 
-function listdescription() {
+const listdescription = () => {
     table.innerHTML = "";
     todos.forEach(function (value, index) {
         const statusbtn = document.createElement("input");
@@ -20,10 +20,6 @@ function listdescription() {
         deletebtn.type = "button";
         deletebtn.value = value.deletion;
         deletebtn.id = "deleteNo" + index;
-        //deletebtn.addEventListener('click', () => {
-        //    todos.splice(index, 1);
-        //    listdescription();
-        //});
 
         let newRow = table.insertRow();
         let newCell = newRow.insertCell();
@@ -40,12 +36,10 @@ function listdescription() {
         newCell = newRow.insertCell();
         newCell.appendChild(deletebtn);
 
-        //idを取得するのでdeletebtnをappend後でないとnullエラー ※getElementはhtmlから取得するのでdeletebtn.idを指定済でもnull
-        document.getElementById(`deleteNo${index}`).onclick = function () {
+        document.getElementById(`deleteNo${index}`).onclick = () => {
             todos.splice(index, 1);
             listdescription();
         }
     });
     comment.value = "";
-    //最初の宣言をconst comment = document.getElementById("comment").value;にすると再定義エラーがでるので全体を取得し.valueで都度出力
 }
