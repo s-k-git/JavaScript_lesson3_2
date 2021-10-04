@@ -19,7 +19,6 @@ const listdescription = () => {
         const deletebtn = document.createElement("input");
         deletebtn.type = "button";
         deletebtn.value = value.deletion;
-        deletebtn.id = "deleteNo" + index;
 
         let newRow = table.insertRow();
         let newCell = newRow.insertCell();
@@ -36,10 +35,10 @@ const listdescription = () => {
         newCell = newRow.insertCell();
         newCell.appendChild(deletebtn);
 
-        document.getElementById(`deleteNo${index}`).onclick = () => {
+        deletebtn.addEventListener("click", () => {
             todos.splice(index, 1);
             listdescription();
-        }
+        });
     });
     comment.value = "";
 }
